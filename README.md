@@ -2,13 +2,13 @@
 
 Official PHP SDK for [wSocket](https://wsocket.io) — Realtime Pub/Sub over WebSockets.
 
-[![Packagist](https://img.shields.io/packagist/v/wsocket/sdk)](https://packagist.org/packages/wsocket/sdk)
+[![Packagist](https://img.shields.io/packagist/v/wsocket-io/sdk)](https://packagist.org/packages/wsocket-io/sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Installation
 
 ```bash
-composer require wsocket/sdk
+composer require wsocket-io/sdk
 ```
 
 ## Quick Start

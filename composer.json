@@ -1,5 +1,5 @@
 {
-    "name": "wsocket/sdk",
+    "name": "wsocket-io/sdk",
     "description": "wSocket Realtime Pub/Sub SDK for PHP",
     "type": "library",
     "license": "MIT",
