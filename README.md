@@ -17,7 +17,7 @@ composer require wsocket-io/sdk
 <?php
 require 'vendor/autoload.php';
 
-$client = new \wSocket\Client('wss://your-server.com', 'your-api-key');
+$client = new \wSocket\Client('wss://node00.wsocket.online', 'your-api-key');
 $client->connect();
 
 $chat = $client->channel('chat:general');
