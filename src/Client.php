@@ -557,4 +557,36 @@ class PushClient
         $res = $this->apiRequest('GET', "/api/admin/apps/{$this->appId}/push/stats");
         return $res['stats'] ?? [];
     }
+
+    /** Add a channel to a member's push subscriptions. */
+    public function addChannel(string $memberId, string $channel): array
+    {
+        return $this->apiRequest('POST', '/api/push/channels/add',
+            ['memberId' => $memberId, 'channel' => $channel]);
+    }
+
+    /** Remove a channel from a member's push subscriptions. */
+    public function removeChannel(string $memberId, string $channel): array
+    {
+        return $this->apiRequest('POST', '/api/push/channels/remove',
+            ['memberId' => $memberId, 'channel' => $channel]);
+    }
+
+    /** Get the VAPID public key for this app. */
+    public function getVapidKey(): ?string
+    {
+        $res = $this->apiRequest('GET', '/api/push/vapid-key');
+        return $res['vapidPublicKey'] ?? null;
+    }
+
+    /** List push subscriptions with optional filters. */
+    public function listSubscriptions(?string $memberId = null, ?string $platform = null, ?int $limit = null): array
+    {
+        $params = [];
+        if ($memberId) $params[] = "memberId=$memberId";
+        if ($platform) $params[] = "platform=$platform";
+        if ($limit) $params[] = "limit=$limit";
+        $qs = $params ? '?' . implode('&', $params) : '';
+        return $this->apiRequest('GET', "/api/push/subscriptions$qs");
+    }
 }
