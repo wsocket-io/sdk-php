@@ -65,6 +65,25 @@ $chat->onHistory(function ($result) {
 $chat->history(['limit' => 50]);
 ```
 
+## Push Notifications
+
+```php
+$push = new \WSocketIO\PushClient('https://your-server.com', 'your-api-key', 'your-app-id');
+
+// Register & send
+$push->registerFCM('device-token', 'user-123');
+$push->sendToMember('user-123', ['title' => 'Hello', 'body' => 'World']);
+$push->broadcast(['title' => 'News']);
+
+// Channel targeting
+$push->addChannel('subscription-id', 'alerts');
+$push->removeChannel('subscription-id', 'alerts');
+
+// VAPID key & subscriptions
+$vapidKey = $push->getVapidKey();
+$subs = $push->listSubscriptions('user-123');
+```
+
 ## Requirements
 
 - PHP >= 8.1
