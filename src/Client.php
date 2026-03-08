@@ -530,6 +530,13 @@ class PushClient
         return $res['removed'] ?? 0;
     }
 
+    /** Delete a specific push subscription by its ID. */
+    public function deleteSubscription(string $subscriptionId): bool
+    {
+        $res = $this->apiRequest('DELETE', "/api/admin/apps/{$this->appId}/push/subscriptions/{$subscriptionId}");
+        return $res['deleted'] ?? false;
+    }
+
     /** Send a push notification to a specific member. */
     public function sendToMember(string $memberId, array $payload): array
     {
